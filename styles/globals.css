@@ -6,6 +6,7 @@ body, * {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
 
+
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -428,6 +429,7 @@ padding: 30px 65px;
 
 }
 
+
 .product-detail-image{
   border-radius: 15px;
    background-color: #ebebeb;
@@ -441,7 +443,13 @@ padding: 30px 65px;
   background-color: #f02d34;
 
 }
+
+.reviwes{
+  color: red;
+}
+
 .small-images-container{
+  
   display: flex;
   gap: 10px;
   margin-top: 20px;
@@ -513,7 +521,7 @@ padding: 30px 65px;
 }
 .buttons .buy-now{
   width: 200px;
-
+  
   padding: 10px 20px;
   background-color: #f02d34;
   color: white;
@@ -530,7 +538,7 @@ padding: 30px 65px;
 }
 .quantity-desc{
   border: 1px solid gray;
-padding: 6px;
+  padding: 4px;
 }
 .quantity-desc span{
   font-size: 16px;
@@ -683,7 +691,7 @@ margin-top: 160px;
   .product-detail-container{
     flex-wrap: wrap;
     }
-  .product-detail-container .product-detail-image{
+  .product-detail-container .product-detail-{
     width: 350px;
     height: 350px;
   }
