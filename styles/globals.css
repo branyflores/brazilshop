@@ -231,7 +231,7 @@ text-align: end;
   border-radius: 15px;
   padding: 10px 16px;
   background-color: white;
-  color: rgb(255, 0, 0);
+  color: rgb(255, 42, 0);
   border: none;
   margin-top: 40px;
   font-size: 18px;
@@ -383,6 +383,7 @@ padding: 20px 10px;
 }
 .remove-item{
   font-size: 24px;
+  margin: 20px;
   color: #f02d34;
   cursor: pointer;
   background: transparent;
@@ -445,7 +446,7 @@ padding: 30px 65px;
 }
 
 .reviwes{
-  color: red;
+  color:#f0782d;
 }
 
 .small-images-container{
@@ -487,7 +488,7 @@ padding: 30px 65px;
   font-weight: 700 ;
   font-size: 26px;
   margin-top: 30px;
-  color:#f02d34;
+  color:#f0782d;
 }
 .price .old-price, .product-price .old-price, .price .old-price{
   color: gray;
@@ -505,12 +506,12 @@ padding: 30px 65px;
 }
 .buttons .add-to-cart{
   padding: 10px 20px;
-  border: 1px solid #f02d34 ;
+  border: 1px solid #f0782d ;
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
   background-color: white;
-  color: #f02d34;
+  color: #f0782d;
   cursor: pointer;
   width: 200px;
    transform: scale(1, 1);
@@ -523,7 +524,7 @@ padding: 30px 65px;
   width: 200px;
   
   padding: 10px 20px;
-  background-color: #f02d34;
+  background-color: #f0782d;
   color: white;
   border: none;
   margin-top: 40px;
@@ -537,15 +538,17 @@ padding: 30px 65px;
   transform:scale(1.1,1.1)
 }
 .quantity-desc{
-  border: 1px solid gray;
-  padding: 4px;
+  border: 2px solid gray;
+  padding: 6px;
 }
 .quantity-desc span{
   font-size: 16px;
   padding: 6px 12px;
   cursor: pointer;
+  
 }
 .quantity-desc .minus{
+  font-size: 20px;
   border-right: 1px solid gray;
   color: #f02d34;
 }
@@ -554,6 +557,7 @@ padding: 30px 65px;
   font-size: 20px;
 }
 .quantity-desc .plus{
+  font-size: 20px;
   color: rgb(49, 168, 49);
 
 }

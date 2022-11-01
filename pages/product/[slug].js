@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useState }from 'react'
+
+
 import { client, urlFor } from '../../lib/client'
 import { Product } from '../../components'
+import { useStateContext } from '../../context/StateContext'
 
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from "react-icons/ai"
+import { unstable_renderSubtreeIntoContainer } from 'react-dom'
 
 const ProductDetails = ({ products, product }) => {
 
     const { image, name, details, price } = product;
+    const [index, setIndex] = useState(0)
+    const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+
+  
 
   return (
     <div>
@@ -15,22 +23,23 @@ const ProductDetails = ({ products, product }) => {
             <div>
             <div 
             className='image-container'>
-                <img src={ urlFor(image && image[0]) }
-                width={250}
-                height={290} />
+                <img src={ urlFor(image && image[index]) }
+                className='product-detail-image' /> 
                 </div>
-                {/* <div className='small-images-container'>
+                <div className='small-images-container'>
                     {image?.map((item, i) => (
                     <img
                         src={urlFor(item)}
-                        className=""
-                        onMouseEnter=""
+                        className={i == index ? 
+                      'small-image selected-image' : 
+                      'small-image'}
+                        onMouseEnter={() => setIndex(i)}
                         />
                     ))}
-                </div> */}
+                </div>
             </div>
             <div className='product-detail-desc'>
-                <hi1>{name}</hi1>
+                <h1>{name}</h1>
                 <div className='reviwes'>
                     <div>
                         <AiFillStar />
@@ -50,19 +59,19 @@ const ProductDetails = ({ products, product }) => {
                     <h3>Quantity</h3>
                     <p className='quantity-desc'>
                         <span className='minus'
-                        onClick=""><AiOutlineMinus />
+                        onClick={decQty}><AiOutlineMinus />
                         </span>
                         <span className='num'
-                        onClick="">0</span>
-                        <span className='plus'
-                        onClick=""><AiOutlinePlus />
+                        onClick="">{qty}</span>
+                        <span className="plus"
+                        onClick={incQty}><AiOutlinePlus />
                         </span>
                     </p>
                 </div>
                 <div className='buttons'>
                     <button type='button'
                     className='add-to-cart' 
-                    onClick="">Add to Cart</button>
+                    onClick={() => onAdd(product, qty)}>Add to Cart</button>
                     <button  type='button'
                     className='buy-now' 
                     onClick=""> Buy now</button>
