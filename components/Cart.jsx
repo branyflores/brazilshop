@@ -9,13 +9,34 @@ import {TiDeleteOutline} from 'react-icons/ti'
 import toast from 'react-hot-toast';
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
-
+import getStripe from '../lib/getStripe';
 
 
 const Cart = () => {
 
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity } = useStateContext();
+  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
+
+  const handleCheckOut = async () => {
+     const stripe = await getStripe ();
+
+    const response = await fetch('/api/stripe', {
+      method: "GET",
+      headers: {
+      'Content-Type': 'application/json',
+     },
+     body: JSON.stringify(cartItems),
+    });
+
+    if(response.statusCode === 500) return;
+    
+    const data = await response.json();
+
+    toast.loading('Redirecting...');
+
+    stripe.redirectToCheckOut({sessionId: data.id})
+
+  }
   return (
     <div className='cart-wrapper' ref={cartRef}>
     <div className='cart-container'>
@@ -28,6 +49,7 @@ const Cart = () => {
         <span className='cart-num-items'>({totalQuantities} items)
         </span>
       </button>
+
       {cartItems.length < 1 && (
         <div className='empty-cart'>
           <AiOutlineShopping size={150} />
@@ -41,6 +63,7 @@ const Cart = () => {
           </Link>
         </div>
       )}
+
       <div className='product-container'>
         {cartItems.length >= 1 && cartItems.map ((item) => (
         <div className='product' key={item._id}>
@@ -68,7 +91,7 @@ const Cart = () => {
                 <button
                 type='button'
                 className='remove-item'
-                onClick=''
+                onClick={() => onRemove(item)}
                 >
                   <TiDeleteOutline />
                 </button>
@@ -85,7 +108,7 @@ const Cart = () => {
     </div>
     <div className='btn-container'>
       <button type="button" className='btn'
-      onClick="">
+      onClick={handleCheckOut}>
         Pay with Stripe
 
       </button>
