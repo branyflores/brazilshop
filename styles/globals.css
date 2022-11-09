@@ -358,9 +358,9 @@ padding: 20px 10px;
  background-color: #ebebeb;
 }
 .item-desc .flex{
-  display: flex;
-  justify-content: space-between;
-  width: 350px;
+  
+   justify-content: space-between;
+   width: 3500px;
    color: #324d67;
 
 }
@@ -522,7 +522,6 @@ padding: 30px 65px;
 }
 .buttons .buy-now{
   width: 200px;
-  
   padding: 10px 20px;
   background-color: #f0782d;
   color: white;
@@ -540,6 +539,7 @@ padding: 30px 65px;
 .quantity-desc{
   border: 2px solid gray;
   padding: 6px;
+  
 }
 .quantity-desc span{
   font-size: 16px;
@@ -557,6 +557,7 @@ padding: 30px 65px;
   font-size: 20px;
 }
 .quantity-desc .plus{
+  
   font-size: 20px;
   color: rgb(49, 168, 49);
 
@@ -728,6 +729,7 @@ margin-top: 160px;
   }
 
 .item-desc .flex{
+  
   width: 200px;
 }
 .top{
@@ -776,5 +778,6 @@ margin-top: 160px;
 .btn-container{
   width: 300px;
   margin: auto;
+  
 }
 }

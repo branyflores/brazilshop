@@ -32,7 +32,7 @@ const onAdd = (product, quantity) => {
             quantity: cartProduct.quantity + quantity
         } 
     })
-
+console.log('updatedCartItems',updatedCartItems)
     setCartItems(updatedCartItems);
     } else {
         product.quantity = quantity;
@@ -105,7 +105,8 @@ return(
         toggleCartItemQuantity,
         setCartItems,
         setTotalPrice,
-        setTotalQuantities
+        setTotalQuantities,
+        
     }}
     
     >
