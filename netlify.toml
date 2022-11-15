@@ -3,6 +3,8 @@
   command = "build"
   functions = "netlify/functions"
   publish = ".next"
+  
+
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
@@ -18,4 +20,4 @@
   #  port = 3000 # Port that the dev server will be listening on
   #  publish = "dist" # Folder with the static content for _redirect file
 
-  ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/
+  ##more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/

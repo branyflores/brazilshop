@@ -8,13 +8,30 @@ import toast from 'react-hot-toast';
 
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
+import getStripe  from '../lib/getStripe';
+import axios from 'axios';
 
 
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
-
  
+
+ const handleCheckout = async () => {
+
+  const {
+    data: {id},
+  } = await axios.post('api/checkout_sessions', {
+    
+    items: Object.entries(cartItems).map(([_, {id, quantity }]) => ({
+      price: id,
+      quantity,
+    }))
+  });
+
+  const stripe = await getStripe();
+  await stripe.handleCheckout({ sessionId: id });
+}
 
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -82,7 +99,7 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
-              <button type="button" className="btn" onClick=''>
+              <button type="button" className="btn" onClick={handleCheckout}>
                 Pay with Stripe
               </button>
             </div>
