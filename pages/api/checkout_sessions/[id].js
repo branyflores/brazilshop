@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 
-const Stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
     const id = req.query.id;
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         throw Error('Incorrect CheckoutSession ID.');
     }
 
-    const checkout_session = await Stripe.checkout.sessions.retrieve(id);
+    const checkout_session = await stripe.checkout.sessions.retrieve(id);
 
     res.status(200).jason(checkout_session);
     } catch (err) {
