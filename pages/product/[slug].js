@@ -6,7 +6,7 @@ import { Product } from '../../components'
 import { useStateContext } from '../../context/StateContext'
 
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from "react-icons/ai"
-import { unstable_renderSubtreeIntoContainer } from 'react-dom'
+
 
 const ProductDetails = ({ products, product }) => {
 
